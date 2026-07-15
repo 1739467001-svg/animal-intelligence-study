@@ -5,7 +5,7 @@ import { conceptKey } from "@/lib/progress";
 import { AnimatePresence, motion } from "framer-motion";
 import { BookOpen, CheckCircle2, ChevronDown, Globe, GraduationCap, HelpCircle, Lightbulb, XCircle } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Streamdown } from "streamdown";
+import { Markdown } from "./Markdown";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
@@ -63,7 +63,7 @@ export function ConceptCard({ concept, lectureId }: { concept: Concept; lectureI
                   {language === 'zh' ? '定义' : 'Definition'}
                 </h4>
                 <div className="text-base leading-relaxed pl-6 border-l-2 border-muted">
-                  <Streamdown>{concept.definition}</Streamdown>
+                  <Markdown>{concept.definition}</Markdown>
                 </div>
               </div>
 
@@ -74,8 +74,8 @@ export function ConceptCard({ concept, lectureId }: { concept: Concept; lectureI
                     <Globe className="w-4 h-4" />
                     {language === 'zh' ? '网络拓展' : 'Web Context'}
                   </h4>
-                  <div className="text-base leading-relaxed pl-6 border-l-2 border-blue-200 bg-blue-50/30 py-2 rounded-r-md">
-                    <Streamdown>{concept.webExplanation}</Streamdown>
+                  <div className="text-base leading-relaxed pl-6 border-l-2 border-blue-200 bg-blue-50/30 dark:border-blue-900 dark:bg-blue-950/30 py-2 rounded-r-md">
+                    <Markdown>{concept.webExplanation}</Markdown>
                   </div>
                 </div>
               )}
@@ -87,8 +87,8 @@ export function ConceptCard({ concept, lectureId }: { concept: Concept; lectureI
                     <GraduationCap className="w-4 h-4" />
                     {language === 'zh' ? '课堂案例' : 'Lecture Example'}
                   </h4>
-                  <div className="text-base leading-relaxed pl-6 border-l-2 border-green-200 bg-green-50/30 py-2 rounded-r-md">
-                    <Streamdown>{concept.lectureExample}</Streamdown>
+                  <div className="text-base leading-relaxed pl-6 border-l-2 border-green-200 bg-green-50/30 dark:border-green-900 dark:bg-green-950/30 py-2 rounded-r-md">
+                    <Markdown>{concept.lectureExample}</Markdown>
                   </div>
                 </div>
               )}
@@ -160,7 +160,7 @@ export function QuizCard({ question }: { question: QuizQuestion }) {
                   variant="outline"
                   className={`w-full justify-start h-auto py-3 px-4 text-left whitespace-normal transition-colors ${
                     selectedOption !== null && idx === question.correctAnswer
-                      ? "border-green-500 bg-green-50 hover:bg-green-50 text-green-900"
+                      ? "border-green-500 bg-green-50 hover:bg-green-50 text-green-900 dark:bg-green-950/40 dark:hover:bg-green-950/40 dark:text-green-200"
                       : selectedOption === idx && idx !== question.correctAnswer
                         ? "border-destructive bg-destructive/10 hover:bg-destructive/10 text-destructive"
                         : ""
@@ -291,7 +291,7 @@ export function ExamQuestionCard({ question, section }: { question: ExamQuestion
                         className="overflow-hidden"
                       >
                         <div className="bg-background/50 p-4 rounded-md border border-border/50 text-sm leading-relaxed space-y-2">
-                          <Streamdown>{question.detailedAnswer}</Streamdown>
+                          <Markdown>{question.detailedAnswer}</Markdown>
                         </div>
                       </motion.div>
                     )}

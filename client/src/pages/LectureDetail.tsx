@@ -4,16 +4,20 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { lectures } from "@/lib/data";
 import { motion } from "framer-motion";
-import { ArrowLeft, BookOpen, GraduationCap, HelpCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, GraduationCap, HelpCircle } from "lucide-react";
 import { useEffect } from "react";
-import { useLocation, useRoute } from "wouter";
+import { Link, useLocation, useRoute } from "wouter";
 
 export default function LectureDetail() {
   const [, params] = useRoute("/lecture/:id");
   const [, setLocation] = useLocation();
   const { language, t } = useLanguage();
-  
-  const lecture = lectures.find(l => l.id === params?.id);
+
+  const currentIndex = lectures.findIndex(l => l.id === params?.id);
+  const lecture = currentIndex >= 0 ? lectures[currentIndex] : undefined;
+  const prevLecture = currentIndex > 0 ? lectures[currentIndex - 1] : undefined;
+  const nextLecture =
+    currentIndex >= 0 && currentIndex < lectures.length - 1 ? lectures[currentIndex + 1] : undefined;
 
   // Preload image
   useEffect(() => {
@@ -191,6 +195,49 @@ export default function LectureDetail() {
             </div>
           </TabsContent>
         </Tabs>
+
+        {/* Prev / Next lecture navigation */}
+        <nav className="mt-16 grid gap-4 border-t pt-8 sm:grid-cols-2">
+          {prevLecture ? (
+            <Link href={`/lecture/${prevLecture.id}`}>
+              <motion.div
+                whileHover={{ x: -4 }}
+                className="group flex h-full cursor-pointer items-center gap-3 rounded-xl border bg-card/50 p-4 transition-colors hover:border-primary/40 hover:bg-accent"
+              >
+                <ArrowLeft className="h-5 w-5 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
+                <div className="min-w-0">
+                  <div className="text-xs uppercase tracking-wider text-muted-foreground">
+                    {language === "zh" ? "上一讲" : "Previous"}
+                  </div>
+                  <div className="truncate font-medium group-hover:text-primary">
+                    {prevLecture[language].title}
+                  </div>
+                </div>
+              </motion.div>
+            </Link>
+          ) : (
+            <span className="hidden sm:block" />
+          )}
+
+          {nextLecture && (
+            <Link href={`/lecture/${nextLecture.id}`}>
+              <motion.div
+                whileHover={{ x: 4 }}
+                className="group flex h-full cursor-pointer items-center justify-end gap-3 rounded-xl border bg-card/50 p-4 text-right transition-colors hover:border-primary/40 hover:bg-accent sm:col-start-2"
+              >
+                <div className="min-w-0">
+                  <div className="text-xs uppercase tracking-wider text-muted-foreground">
+                    {language === "zh" ? "下一讲" : "Next"}
+                  </div>
+                  <div className="truncate font-medium group-hover:text-primary">
+                    {nextLecture[language].title}
+                  </div>
+                </div>
+                <ArrowRight className="h-5 w-5 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
+              </motion.div>
+            </Link>
+          )}
+        </nav>
       </main>
     </div>
   );
