@@ -1,0 +1,9 @@
+[build]
+  command = "pnpm exec vite build"
+  publish = "dist/public"
+
+# SPA fallback so client-side routes (e.g. /lecture/lecture-1) don't 404
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
