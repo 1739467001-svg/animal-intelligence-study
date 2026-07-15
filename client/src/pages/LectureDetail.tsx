@@ -121,7 +121,7 @@ export default function LectureDetail() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1 }}
                 >
-                  <ConceptCard concept={concept} />
+                  <ConceptCard concept={concept} lectureId={lecture.id} />
                 </motion.div>
               ))}
             </div>

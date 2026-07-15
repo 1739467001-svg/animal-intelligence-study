@@ -7,6 +7,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import Home from "./pages/Home";
 import LectureDetail from "./pages/LectureDetail";
+import LearningReport from "./pages/LearningReport";
 import { Navbar } from "./components/Navbar";
 
 function Router() {
@@ -14,6 +15,7 @@ function Router() {
     <Switch>
       <Route path={"/"} component={Home} />
       <Route path={"/lecture/:id"} component={LectureDetail} />
+      <Route path={"/report"} component={LearningReport} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

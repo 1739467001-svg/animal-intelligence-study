@@ -1,18 +1,30 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { Concept, ExamQuestion, QuizQuestion } from "@/lib/data";
+import { conceptKey } from "@/lib/progress";
 import { AnimatePresence, motion } from "framer-motion";
 import { BookOpen, CheckCircle2, ChevronDown, Globe, GraduationCap, HelpCircle, Lightbulb, XCircle } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Streamdown } from "streamdown";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Textarea } from "./ui/textarea";
 
-export function ConceptCard({ concept }: { concept: Concept }) {
+export function ConceptCard({ concept, lectureId }: { concept: Concept; lectureId?: string }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const { language } = useLanguage();
+
+  // Record that this concept was explored (feeds the live learning report).
+  useEffect(() => {
+    if (isExpanded && lectureId) {
+      try {
+        window.localStorage.setItem(conceptKey(lectureId, concept.term), "true");
+      } catch {
+        // ignore storage errors
+      }
+    }
+  }, [isExpanded, lectureId, concept.term]);
 
   return (
     <Card className="overflow-hidden border-l-4 border-l-primary transition-all duration-300 hover:shadow-lg hover:border-l-[6px]">

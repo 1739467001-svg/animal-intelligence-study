@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
-import { Globe, BrainCircuit } from "lucide-react";
+import { Globe, BrainCircuit, LineChart } from "lucide-react";
 import { Link } from "wouter";
 
 export function Navbar() {
@@ -32,7 +32,17 @@ export function Navbar() {
           </motion.div>
         </Link>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
+          <Link href="/report">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.92 }}>
+              <Button variant="ghost" size="sm" className="flex items-center gap-2">
+                <LineChart className="h-4 w-4" />
+                <span className="hidden sm:inline-block">
+                  {language === "zh" ? "学习报告" : "Report"}
+                </span>
+              </Button>
+            </motion.div>
+          </Link>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.92 }}>
             <Button
               variant="ghost"
