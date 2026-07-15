@@ -929,6 +929,30 @@ This exercise illustrates that **situatedness** (reacting to the here-and-now) m
           ],
           correctAnswer: 1,
           explanation: "By maintaining a constant optic flow rate, the bee's velocity automatically decreases as the height decreases, leading to a smooth touchdown with zero velocity."
+        },
+        {
+          id: "q5-2",
+          question: "Before jumping, a locust sways its head from side to side. What is the purpose of this 'peering' behaviour?",
+          options: [
+            "To scare away predators.",
+            "To generate motion parallax and judge the distance to the target.",
+            "To cool down its eyes.",
+            "To signal to other locusts."
+          ],
+          correctAnswer: 1,
+          explanation: "Peering is an active sensing strategy. By moving its head, the locust creates motion parallax: a nearer target sweeps across the retina more than a far one, giving a distance estimate before it commits to the jump."
+        },
+        {
+          id: "q5-3",
+          question: "How does a bee fly down the centre of a narrow tunnel without measuring its width?",
+          options: [
+            "It uses echolocation to map the walls.",
+            "It balances the rate of optic flow in its left and right eyes.",
+            "It follows a pheromone trail left on the walls.",
+            "It memorises the tunnel from a previous flight."
+          ],
+          correctAnswer: 1,
+          explanation: "The 'centering response': whichever wall is closer produces faster optic flow. The bee steers away from the faster side until flow is equal on both eyes, keeping it centred regardless of tunnel width."
         }
       ],
       sectionA: [
@@ -999,6 +1023,30 @@ This exercise illustrates that **situatedness** (reacting to the here-and-now) m
           ],
           correctAnswer: 1,
           explanation: "通过保持恒定的光流速率，蜜蜂的速度随着高度的降低而自动降低，导致零速度的平稳着陆。"
+        },
+        {
+          id: "q5-2",
+          question: "跳跃之前，蝗虫会左右摇晃头部。这种'窥视（peering）'行为的目的是什么？",
+          options: [
+            "吓退捕食者。",
+            "产生运动视差，以判断到目标的距离。",
+            "给眼睛降温。",
+            "向其他蝗虫发出信号。"
+          ],
+          correctAnswer: 1,
+          explanation: "窥视是一种主动感知策略。通过移动头部，蝗虫产生运动视差：较近的目标在视网膜上扫过的幅度比较远的目标大，从而在起跳前获得距离估计。"
+        },
+        {
+          id: "q5-3",
+          question: "蜜蜂如何在不测量隧道宽度的情况下沿着狭窄隧道的中心飞行？",
+          options: [
+            "用回声定位绘制墙壁地图。",
+            "平衡左右两眼的光流速率。",
+            "跟随留在墙上的费洛蒙痕迹。",
+            "凭之前飞行的记忆。"
+          ],
+          correctAnswer: 1,
+          explanation: "'居中反应'：哪一侧墙壁更近，该侧的光流就更快。蜜蜂转向远离较快的一侧，直到两眼光流相等，从而无论隧道多宽都能保持居中。"
         }
       ],
       sectionA: [
@@ -1074,6 +1122,30 @@ This exercise illustrates that **situatedness** (reacting to the here-and-now) m
           ],
           correctAnswer: 1,
           explanation: "Small errors in measuring angle or distance add up. Without external landmarks to reset the position, the estimated location becomes increasingly inaccurate over long distances."
+        },
+        {
+          id: "q6-2",
+          question: "What does the Cataglyphis desert ant use as a 'compass' for path integration?",
+          options: [
+            "The Earth's magnetic field.",
+            "The pattern of polarized light in the sky.",
+            "Landmarks on the horizon.",
+            "The smell of the nest."
+          ],
+          correctAnswer: 1,
+          explanation: "In a featureless desert with few landmarks, the ant reads the polarization pattern of skylight (set by the sun's position) to keep track of its heading, while counting steps as an odometer."
+        },
+        {
+          id: "q6-3",
+          question: "In the 'snapshot model' of visual homing, how does an animal find its goal?",
+          options: [
+            "It builds a full metric map of the whole area.",
+            "It moves so as to reduce the difference between its current view and a stored image of the goal.",
+            "It follows a chemical trail back to the goal.",
+            "It integrates distance and direction from the start."
+          ],
+          correctAnswer: 1,
+          explanation: "Snapshot / view-based homing stores an image of the surroundings at the goal, then steers to make the current view increasingly match that remembered snapshot — no full cognitive map required."
         }
       ],
       sectionA: [
@@ -1141,6 +1213,30 @@ This exercise illustrates that **situatedness** (reacting to the here-and-now) m
           ],
           correctAnswer: 1,
           explanation: "测量角度或距离的小误差会累加。如果没有外部地标来重置位置，估计的位置在长距离上会变得越来越不准确。"
+        },
+        {
+          id: "q6-2",
+          question: "Cataglyphis 沙漠蚂蚁使用什么作为路径积分的'指南针'？",
+          options: [
+            "地球磁场。",
+            "天空中偏振光的模式。",
+            "地平线上的地标。",
+            "巢穴的气味。"
+          ],
+          correctAnswer: 1,
+          explanation: "在几乎没有地标的沙漠中，蚂蚁读取天空光的偏振模式（由太阳位置决定）来追踪自己的航向，同时通过数步数作为里程表。"
+        },
+        {
+          id: "q6-3",
+          question: "在视觉归巢的'快照模型'中，动物如何找到目标？",
+          options: [
+            "构建整个区域的完整度量地图。",
+            "移动以减小当前视图与存储的目标图像之间的差异。",
+            "跟随通向目标的化学痕迹。",
+            "从起点积分距离和方向。"
+          ],
+          correctAnswer: 1,
+          explanation: "快照/基于视图的归巢会存储目标处周围环境的图像，然后调整方向使当前视图越来越接近记忆中的快照——无需完整的认知地图。"
         }
       ],
       sectionA: [
@@ -1213,6 +1309,30 @@ This exercise illustrates that **situatedness** (reacting to the here-and-now) m
           ],
           correctAnswer: 1,
           explanation: "The brain sends a copy of the motor command (efference copy) to the forward model, which predicts the sensory outcome. This prediction is subtracted from the actual sensation, cancelling it out."
+        },
+        {
+          id: "q7-2",
+          question: "What is the 'Degrees of Freedom' (Bernstein's) problem?",
+          options: [
+            "The body cannot move fast enough to react.",
+            "The body has far more ways to move than needed, so the brain must choose one solution from infinitely many.",
+            "Muscles get tired after repeated use.",
+            "Nerves can only carry a limited number of signals."
+          ],
+          correctAnswer: 1,
+          explanation: "There are infinitely many joint/muscle combinations that achieve the same goal (e.g. touching your nose). The control problem is selecting and coordinating one workable solution out of that redundancy."
+        },
+        {
+          id: "q7-3",
+          question: "How does an octopus cope with the near-infinite degrees of freedom in its flexible arm?",
+          options: [
+            "It grows extra nerves to control every point.",
+            "It reduces the problem using stereotypical motor patterns, such as propagating a bend along the arm.",
+            "It keeps the arm rigid at all times.",
+            "It only moves the arm one joint at a time."
+          ],
+          correctAnswer: 1,
+          explanation: "Rather than controlling every point independently, the octopus uses a few stereotypical patterns — e.g. sending a travelling bend down the arm — which drastically cuts the control complexity."
         }
       ],
       sectionA: [
@@ -1282,6 +1402,30 @@ This exercise illustrates that **situatedness** (reacting to the here-and-now) m
           ],
           correctAnswer: 1,
           explanation: "大脑将运动指令的副本（传出副本）发送给前向模型，前向模型预测感官结果。这个预测从实际感觉中减去，将其抵消。"
+        },
+        {
+          id: "q7-2",
+          question: "什么是'自由度'问题（伯恩斯坦问题）？",
+          options: [
+            "身体无法快速移动以做出反应。",
+            "身体的运动方式远多于所需，因此大脑必须从无限多的方案中选择一个。",
+            "肌肉反复使用后会疲劳。",
+            "神经只能传递有限数量的信号。"
+          ],
+          correctAnswer: 1,
+          explanation: "有无限多的关节/肌肉组合可以实现同一目标（例如摸鼻子）。控制问题在于从这种冗余中选择并协调出一个可行的解决方案。"
+        },
+        {
+          id: "q7-3",
+          question: "章鱼如何应对其柔性触手近乎无限的自由度？",
+          options: [
+            "长出额外的神经来控制每一个点。",
+            "使用刻板的运动模式（如沿触手传播一个弯曲）来降低问题难度。",
+            "始终保持触手僵直。",
+            "一次只移动触手的一个关节。"
+          ],
+          correctAnswer: 1,
+          explanation: "章鱼并不独立控制每个点，而是使用少数几种刻板模式——例如沿触手传送一个行进的弯曲——从而大幅降低控制复杂度。"
         }
       ],
       sectionA: [
@@ -1356,6 +1500,30 @@ This exercise illustrates that **situatedness** (reacting to the here-and-now) m
           ],
           correctAnswer: 1,
           explanation: "Spontaneous modification of a tool (bending the wire) to solve a new problem suggests causal understanding (folk physics) rather than just instinct or rote learning."
+        },
+        {
+          id: "q8-2",
+          question: "What cognitive ability does the 'trap-tube task' aim to test?",
+          options: [
+            "How fast an animal can learn by trial and error.",
+            "Whether an animal understands the causal physics of the situation, not just a learned association.",
+            "How strong the animal is.",
+            "Whether the animal can recognise its own reflection."
+          ],
+          correctAnswer: 1,
+          explanation: "The trap tube separates genuine causal understanding (folk physics — knowing why the food would fall into the hole) from simple associative learning of 'push from this side'."
+        },
+        {
+          id: "q8-3",
+          question: "Which of the following is an example of 'metatool use'?",
+          options: [
+            "Using a stick to extract termites.",
+            "Using a stone to crack a nut.",
+            "Using a short tool to reach a longer tool, then using the long tool to reach food.",
+            "Bending a wire into a hook."
+          ],
+          correctAnswer: 2,
+          explanation: "Metatool use is using one tool to obtain another tool. It requires holding a sub-goal (get the second tool) in service of the main goal, indicating hierarchical planning."
         }
       ],
       sectionA: [
@@ -1426,6 +1594,30 @@ This exercise illustrates that **situatedness** (reacting to the here-and-now) m
           ],
           correctAnswer: 1,
           explanation: "自发地修改工具（弯曲铁丝）来解决新问题表明了因果理解（民间物理学），而不仅仅是本能或死记硬背。"
+        },
+        {
+          id: "q8-2",
+          question: "'陷阱管任务（trap-tube task）'旨在测试何种认知能力？",
+          options: [
+            "动物通过试错学习的速度有多快。",
+            "动物是否理解情境背后的因果物理，而不仅仅是习得的关联。",
+            "动物有多强壮。",
+            "动物能否认出自己的镜像。"
+          ],
+          correctAnswer: 1,
+          explanation: "陷阱管任务将真正的因果理解（民间物理学——知道食物为何会掉进洞里）与简单的'从这一侧推'的联想学习区分开来。"
+        },
+        {
+          id: "q8-3",
+          question: "以下哪项是'元工具使用（metatool use）'的例子？",
+          options: [
+            "用棍子掏白蚁。",
+            "用石头砸开坚果。",
+            "用一个短工具够到一个更长的工具，再用长工具够到食物。",
+            "把铁丝弯成钩子。"
+          ],
+          correctAnswer: 2,
+          explanation: "元工具使用是用一个工具去获取另一个工具。它需要为了主目标而保持一个子目标（先拿到第二个工具），体现出分层规划。"
         }
       ],
       sectionA: [
@@ -1501,6 +1693,30 @@ This exercise illustrates that **situatedness** (reacting to the here-and-now) m
           ],
           correctAnswer: 1,
           explanation: "The hypothesis argues that the complexity of social life (maintaining cohesion, managing conflicts) exerts the strongest selection pressure on brain size in primates."
+        },
+        {
+          id: "q9-2",
+          question: "A whale's brain is far larger than a human's, yet whales are not considered more intelligent. Why does Encephalization Quotient (EQ) explain this?",
+          options: [
+            "Whale brains are made of different tissue.",
+            "EQ accounts for body size; much of the whale's brain is needed just to run its huge body, so its EQ is lower than a human's.",
+            "Whales don't use their brains underwater.",
+            "EQ only measures the neocortex."
+          ],
+          correctAnswer: 1,
+          explanation: "Brain size scales with body size. EQ = actual brain mass / predicted mass for that body size. Humans have a very high EQ (~7.5), while whales have large absolute brains but a lower EQ."
+        },
+        {
+          id: "q9-3",
+          question: "What does 'Dunbar's number' (~150) refer to?",
+          options: [
+            "The maximum number of tools an animal can use.",
+            "The cognitive limit on the number of stable social relationships one can maintain, predicted by brain size.",
+            "The number of neurons in the neocortex.",
+            "The average group size of all mammals."
+          ],
+          correctAnswer: 1,
+          explanation: "Dunbar's number is the predicted limit on stable relationships an individual can track, derived from the correlation between neocortex size and social group size in the Social Brain Hypothesis."
         }
       ],
           sectionA: [
@@ -1592,6 +1808,30 @@ This exercise illustrates that **situatedness** (reacting to the here-and-now) m
           ],
           correctAnswer: 1,
           explanation: "该假说认为，社会生活的复杂性（维持凝聚力、管理冲突）对灵长类动物的大脑大小施加了最强的选择压力。"
+        },
+        {
+          id: "q9-2",
+          question: "鲸鱼的大脑远大于人类，但鲸鱼并不被认为更聪明。脑化商（EQ）如何解释这一点？",
+          options: [
+            "鲸鱼大脑由不同的组织构成。",
+            "EQ 考虑了体型；鲸鱼大脑很大一部分只是用来运转其庞大的身体，因此其 EQ 低于人类。",
+            "鲸鱼在水下不使用大脑。",
+            "EQ 只测量新皮层。"
+          ],
+          correctAnswer: 1,
+          explanation: "大脑大小随体型增长。EQ = 实际脑质量 / 该体型的预测脑质量。人类的 EQ 非常高（约7.5），而鲸鱼绝对脑量大但 EQ 较低。"
+        },
+        {
+          id: "q9-3",
+          question: "'邓巴数（Dunbar's number，约150）'指的是什么？",
+          options: [
+            "一种动物能使用的工具的最大数量。",
+            "一个人能维持的稳定社会关系数量的认知上限，由大脑大小预测。",
+            "新皮层中的神经元数量。",
+            "所有哺乳动物的平均群体规模。"
+          ],
+          correctAnswer: 1,
+          explanation: "邓巴数是个体能追踪的稳定关系数量的预测上限，源自社会脑假说中新皮层大小与社会群体规模之间的相关性。"
         }
       ],
           sectionA: [

@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext } from 'react';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 type Language = 'en' | 'zh';
 
@@ -52,7 +53,8 @@ export const translations = {
 };
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<Language>('zh'); // Default to Chinese as requested
+  // Default to Chinese, but remember the user's choice across visits.
+  const [language, setLanguage] = useLocalStorage<Language>('ais.language', 'zh');
 
   const t = (key: string) => {
     return translations[language][key as keyof typeof translations['en']] || key;

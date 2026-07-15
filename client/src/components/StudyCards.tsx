@@ -1,7 +1,8 @@
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { Concept, ExamQuestion, QuizQuestion } from "@/lib/data";
 import { AnimatePresence, motion } from "framer-motion";
-import { BookOpen, CheckCircle2, ChevronDown, ChevronUp, Globe, GraduationCap, HelpCircle, Lightbulb, XCircle } from "lucide-react";
+import { BookOpen, CheckCircle2, ChevronDown, Globe, GraduationCap, HelpCircle, Lightbulb, XCircle } from "lucide-react";
 import { useState } from "react";
 import { Streamdown } from "streamdown";
 import { Badge } from "./ui/badge";
@@ -14,17 +15,24 @@ export function ConceptCard({ concept }: { concept: Concept }) {
   const { language } = useLanguage();
 
   return (
-    <Card className="overflow-hidden border-l-4 border-l-primary hover:shadow-md transition-shadow">
-      <CardHeader 
+    <Card className="overflow-hidden border-l-4 border-l-primary transition-all duration-300 hover:shadow-lg hover:border-l-[6px]">
+      <CardHeader
         className="cursor-pointer bg-muted/10 hover:bg-muted/20 transition-colors"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3">
-            <Lightbulb className="w-5 h-5 text-primary mt-1" />
+            <motion.span
+              animate={isExpanded ? { rotate: [0, -15, 15, 0], scale: 1.1 } : { scale: 1 }}
+              transition={{ duration: 0.4 }}
+            >
+              <Lightbulb className={`w-5 h-5 mt-1 transition-colors ${isExpanded ? "text-primary fill-primary/20" : "text-primary"}`} />
+            </motion.span>
             <CardTitle className="text-xl font-serif">{concept.term}</CardTitle>
           </div>
-          {isExpanded ? <ChevronUp className="w-5 h-5 text-muted-foreground" /> : <ChevronDown className="w-5 h-5 text-muted-foreground" />}
+          <motion.span animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.3 }}>
+            <ChevronDown className="w-5 h-5 text-muted-foreground" />
+          </motion.span>
         </div>
       </CardHeader>
       <AnimatePresence>
@@ -81,14 +89,17 @@ export function ConceptCard({ concept }: { concept: Concept }) {
 }
 
 export function QuizCard({ question }: { question: QuizQuestion }) {
-  const [selectedOption, setSelectedOption] = useState<number | null>(null);
-  const [showExplanation, setShowExplanation] = useState(false);
+  // Persist the chosen answer so progress survives navigation/refresh.
+  const [selectedOption, setSelectedOption] = useLocalStorage<number | null>(
+    `ais.quiz.${question.id}`,
+    null,
+  );
+  const showExplanation = selectedOption !== null;
   const { language } = useLanguage();
 
   const handleOptionClick = (idx: number) => {
     if (selectedOption !== null) return; // Prevent changing answer
     setSelectedOption(idx);
-    setShowExplanation(true);
   };
 
   return (
@@ -113,31 +124,45 @@ export function QuizCard({ question }: { question: QuizQuestion }) {
             if (selectedOption !== null) {
               if (idx === question.correctAnswer) {
                 variant = "default"; // Correct answer always green/primary
-                icon = <CheckCircle2 className="w-4 h-4 ml-auto text-green-500" />;
+                icon = <CheckCircle2 className="w-4 h-4 ml-auto text-green-500 animate-pop-in" />;
               } else if (idx === selectedOption) {
                 variant = "destructive"; // Wrong selection
-                icon = <XCircle className="w-4 h-4 ml-auto text-destructive" />;
+                icon = <XCircle className="w-4 h-4 ml-auto text-destructive animate-pop-in" />;
               }
             }
 
+            const unanswered = selectedOption === null;
             return (
-              <Button
+              <motion.div
                 key={idx}
-                variant="outline"
-                className={`justify-start h-auto py-3 px-4 text-left whitespace-normal ${
-                  selectedOption !== null && idx === question.correctAnswer 
-                    ? "border-green-500 bg-green-50 hover:bg-green-50 text-green-900" 
-                    : selectedOption === idx && idx !== question.correctAnswer
-                    ? "border-destructive bg-destructive/10 hover:bg-destructive/10 text-destructive"
-                    : ""
-                }`}
-                onClick={() => handleOptionClick(idx)}
-                disabled={selectedOption !== null}
+                whileHover={unanswered ? { scale: 1.015, x: 3 } : undefined}
+                whileTap={unanswered ? { scale: 0.985 } : undefined}
+                animate={
+                  selectedOption === idx && idx !== question.correctAnswer
+                    ? { x: [0, -6, 6, -4, 4, 0] }
+                    : undefined
+                }
+                transition={{ duration: 0.4 }}
               >
-                <span className="mr-3 font-bold text-muted-foreground">{String.fromCharCode(65 + idx)}.</span>
-                {option}
-                {icon}
-              </Button>
+                <Button
+                  variant="outline"
+                  className={`w-full justify-start h-auto py-3 px-4 text-left whitespace-normal transition-colors ${
+                    selectedOption !== null && idx === question.correctAnswer
+                      ? "border-green-500 bg-green-50 hover:bg-green-50 text-green-900"
+                      : selectedOption === idx && idx !== question.correctAnswer
+                        ? "border-destructive bg-destructive/10 hover:bg-destructive/10 text-destructive"
+                        : ""
+                  }`}
+                  onClick={() => handleOptionClick(idx)}
+                  disabled={selectedOption !== null}
+                >
+                  <span className="mr-3 font-bold text-muted-foreground">
+                    {String.fromCharCode(65 + idx)}.
+                  </span>
+                  {option}
+                  {icon}
+                </Button>
+              </motion.div>
             );
           })}
         </div>
@@ -164,7 +189,8 @@ export function QuizCard({ question }: { question: QuizQuestion }) {
 export function ExamQuestionCard({ question, section }: { question: ExamQuestion, section?: string }) {
   const [showAnswer, setShowAnswer] = useState(false);
   const [showDetailedAnswer, setShowDetailedAnswer] = useState(false);
-  const [userAnswer, setUserAnswer] = useState("");
+  // Persist the user's drafted answer so it isn't lost on navigation/refresh.
+  const [userAnswer, setUserAnswer] = useLocalStorage<string>(`ais.exam.${question.id}`, "");
   const { language } = useLanguage();
 
   return (

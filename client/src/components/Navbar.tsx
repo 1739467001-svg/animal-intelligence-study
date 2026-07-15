@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { motion } from "framer-motion";
 import { Globe, BrainCircuit } from "lucide-react";
 import { Link } from "wouter";
 
@@ -7,31 +8,49 @@ export function Navbar() {
   const { language, setLanguage } = useLanguage();
 
   const toggleLanguage = () => {
-    setLanguage(language === 'zh' ? 'en' : 'zh');
+    setLanguage(language === "zh" ? "en" : "zh");
   };
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center justify-between">
         <Link href="/">
-          <div className="flex items-center gap-2 font-bold text-lg cursor-pointer hover:opacity-80 transition-opacity">
-            <BrainCircuit className="h-6 w-6 text-primary" />
-            <span className="hidden sm:inline-block">
-              {language === 'zh' ? '动物智能复习指南' : 'Animal Intelligence Study'}
-            </span>
-          </div>
-        </Link>
-        
-        <div className="flex items-center gap-2">
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            onClick={toggleLanguage}
-            className="flex items-center gap-2"
+          <motion.div
+            className="flex items-center gap-2 font-bold text-lg cursor-pointer"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
           >
-            <Globe className="h-4 w-4" />
-            <span>{language === 'zh' ? 'English' : '中文'}</span>
-          </Button>
+            <motion.span
+              animate={{ rotate: [0, -8, 8, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <BrainCircuit className="h-6 w-6 text-primary" />
+            </motion.span>
+            <span className="hidden sm:inline-block">
+              {language === "zh" ? "动物智能复习指南" : "Animal Intelligence Study"}
+            </span>
+          </motion.div>
+        </Link>
+
+        <div className="flex items-center gap-2">
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.92 }}>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={toggleLanguage}
+              className="flex items-center gap-2"
+            >
+              <motion.span
+                key={language}
+                initial={{ rotate: -180, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                transition={{ type: "spring" as const, stiffness: 260, damping: 18 }}
+              >
+                <Globe className="h-4 w-4" />
+              </motion.span>
+              <span>{language === "zh" ? "English" : "中文"}</span>
+            </Button>
+          </motion.div>
         </div>
       </div>
     </nav>

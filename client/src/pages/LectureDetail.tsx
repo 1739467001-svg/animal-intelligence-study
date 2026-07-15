@@ -23,6 +23,11 @@ export default function LectureDetail() {
     }
   }, [lecture?.image]);
 
+  // Jump to the top when navigating between lectures
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [params?.id]);
+
   if (!lecture) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
